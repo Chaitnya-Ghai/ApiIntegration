@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClass {
     companion object{
-        private val retrofit by lazy {
+        private val retrofit by lazy{
 //            lazy means we only initialize this here once
             val logging=HttpLoggingInterceptor()
 //            attach to retrofit object
@@ -23,17 +23,11 @@ class RetrofitClass {
                 .client(client)
                 .build()
         }
-
-
 //        GET API INSTANCE FROM RETROFIT BUILDER
 //        api object
 //        this can be used from everywhere to make network requests
-//
         val api by lazy {
             retrofit.create(ApiInterface::class.java)
         }
     }
-
-
-
 }

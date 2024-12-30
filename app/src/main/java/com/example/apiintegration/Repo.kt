@@ -3,7 +3,7 @@ package com.example.apiintegration
 import retrofit2.Response
 
 class Repo {
-    suspend fun getData(): Response<ResponseModel> {
+    suspend fun getData():Response<ResponseModel>{
         return RetrofitClass.api.getData()
     }
 }

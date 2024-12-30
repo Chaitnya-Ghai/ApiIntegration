@@ -30,6 +30,10 @@ class RecyclerAdapter(var context: Context,var list:ArrayList<ResponseModel.Data
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.Fname.text=list[position].first_name
+        holder.Lname.text=list[position].last_name
+        holder.email.text=list[position].email
+        holder.delete.setOnClickListener { recyclerInterface.delete(position) }
         holder.item.setOnClickListener { recyclerInterface.itemClick(position,ResponseModel()) }
     }
 }

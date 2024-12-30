@@ -44,12 +44,13 @@ class MainActivity : AppCompatActivity(), RecyclerInterface {
                     Toast.makeText(this, "error", Toast.LENGTH_SHORT).show()
                 }
                 is SealedClass.Loading->{
-                    Toast.makeText(this, "loading", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "loadinggg", Toast.LENGTH_LONG).show()
                 }
                 is SealedClass.Success->{
                     Toast.makeText(this, "success", Toast.LENGTH_SHORT).show()
                     it.data?.data?.forEach{
                         array.add(it!!)
+                        recyclerAdapter.notifyDataSetChanged()
                     }
                     recyclerAdapter.notifyDataSetChanged()
                 }
