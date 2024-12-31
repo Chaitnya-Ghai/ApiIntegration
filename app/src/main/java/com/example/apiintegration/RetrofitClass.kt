@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClass {
-    companion object{
+    companion object{ //class ka jese obj bnate esme nhi jarurt
         private val retrofit by lazy{
 //            lazy means we only initialize this here once
             val logging=HttpLoggingInterceptor()

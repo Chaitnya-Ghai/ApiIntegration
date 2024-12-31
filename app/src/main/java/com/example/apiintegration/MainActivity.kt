@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModel
@@ -50,7 +51,6 @@ class MainActivity : AppCompatActivity(), RecyclerInterface {
                     Toast.makeText(this, "success", Toast.LENGTH_SHORT).show()
                     it.data?.data?.forEach{
                         array.add(it!!)
-                        recyclerAdapter.notifyDataSetChanged()
                     }
                     recyclerAdapter.notifyDataSetChanged()
                 }
@@ -67,14 +67,16 @@ class MainActivity : AppCompatActivity(), RecyclerInterface {
         recyclerAdapter.notifyDataSetChanged()
     }
 
-    override fun update(position: Int, oldModel: ResponseModel) {
-
+    override fun update(position: Int, oldModel: ResponseModel.Data) {
         array[position]=ResponseModel.Data()
     }
 
-    override fun itemClick(position: Int, model: ResponseModel) {
+    override fun itemClick(position: Int, model: ResponseModel.Data) {
         Toast.makeText(this, "chl rha hai ${position}", Toast.LENGTH_SHORT).show()
         val intent= Intent(this,NextActivity::class.java)
+        intent.putExtra("first_name",model.first_name)
+        intent.putExtra("last_name",model.last_name)
+        intent.putExtra("email",model.email)
         startActivity(intent)
     }
 }

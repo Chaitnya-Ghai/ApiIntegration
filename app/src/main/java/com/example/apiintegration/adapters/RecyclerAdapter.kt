@@ -10,13 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.apiintegration.R
 import com.example.apiintegration.ResponseModel
 
-class RecyclerAdapter(var context: Context,var list:ArrayList<ResponseModel.Data>,var recyclerInterface: RecyclerInterface ):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-    class ViewHolder(var view:View):RecyclerView.ViewHolder(view) {
+class RecyclerAdapter(context: Context,var list:ArrayList<ResponseModel.Data>,var recyclerInterface: RecyclerInterface ):RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+    class ViewHolder(view:View):RecyclerView.ViewHolder(view) {
         val Fname=view.findViewById<TextView>(R.id.tvFirstName)
         val Lname=view.findViewById<TextView>(R.id.tvSecondName)
-        val email=view.findViewById<TextView>(R.id.tvSecondName)
+        val email=view.findViewById<TextView>(R.id.tvemail)
         val delete=view.findViewById<TextView>(R.id.deleteBtn)
-        val update=view.findViewById<TextView>(R.id.updateBtn)
         val item=view.findViewById<ConstraintLayout>(R.id.constraintAdapter)
     }
 
@@ -34,6 +33,6 @@ class RecyclerAdapter(var context: Context,var list:ArrayList<ResponseModel.Data
         holder.Lname.text=list[position].last_name
         holder.email.text=list[position].email
         holder.delete.setOnClickListener { recyclerInterface.delete(position) }
-        holder.item.setOnClickListener { recyclerInterface.itemClick(position,ResponseModel()) }
+        holder.item.setOnClickListener { recyclerInterface.itemClick(position,list[position]) }
     }
 }
